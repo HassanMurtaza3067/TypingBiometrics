@@ -91,9 +91,9 @@ const styles = StyleSheet.create({
   },
   btnStyle: {
     flex: 1,
-    height: 70,
+    height: 60,
     borderWidth: 2,
-    borderRadius: 20,
+    borderRadius: 10,
     borderColor: '#4B4FED',
     justifyContent: 'center',
     alignItems: 'center',
