@@ -80,7 +80,7 @@ const Login = () => {
         <View style={styles.inputContainer}>
           <Image
             style={styles.icon}
-            source={pswdInputSelected ? Email_Filled : Email_Unfilled}
+            source={pswdInputSelected ? Lock_Filled : Lock_Unfilled}
           />
           <TextInput
             onFocus={() => setPswdInputSelected(true)}
