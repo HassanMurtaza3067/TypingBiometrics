@@ -11,39 +11,33 @@ import React from 'react';
 
 import Metrics from '../theme/metrics';
 
-const Splash = ({navigation}) => {
+const Auth_Sucessful = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.imageContainer}>
         <ImageBackground
           style={styles.imageBackground}
           resizeMode="contain"
-          source={require('../assets/images/splash_image.png')}>
-          <Image
-            style={styles.image}
-            source={require('../assets/logo/logo.png')}
-          />
+          source={require('../assets/icons/Auth_Sucessfull.png')}>
+          <TouchableOpacity
+            style={styles.backArrowImageContainer}
+            onPress={() => navigation.goBack()}>
+            <Image
+              style={styles.backArrowImage}
+              source={require('../assets/icons/Arrow_Back.png')}
+            />
+          </TouchableOpacity>
         </ImageBackground>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.header}>Multi Factor Authentication</Text>
-        <Text style={styles.paragraph}>
-          Identifies the users by the way they type using Artificial
-          Intelligence and Machine Learning
-        </Text>
+        <Text style={styles.header}>Authentication</Text>
+        <Text style={styles.header}>Sucessfull</Text>
       </View>
       <View style={{flex: 1, justifyContent: 'flex-end'}}>
         <View style={styles.btnContainer}>
           <TouchableOpacity
-            style={styles.btnStyle}
-            onPress={() => navigation.navigate('Login')}>
-            <Text style={styles.btnText}>Login</Text>
-          </TouchableOpacity>
-          <View style={{width: 20}}></View>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('SignUp')}
             style={[styles.btnStyle, {backgroundColor: '#4B4FED'}]}>
-            <Text style={styles.btnText}>Registration</Text>
+            <Text style={styles.btnText}>Continue</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -51,7 +45,7 @@ const Splash = ({navigation}) => {
   );
 };
 
-export default Splash;
+export default Auth_Sucessful;
 
 const styles = StyleSheet.create({
   container: {
@@ -72,6 +66,21 @@ const styles = StyleSheet.create({
     width: Metrics.screenWidth * (40 / 100),
     height: Metrics.screenHeight * (10 / 100),
   },
+  backArrowImageContainer: {
+    backgroundColor: '#131313',
+    width: Metrics.screenWidth * (15 / 100),
+    height: Metrics.screenWidth * (15 / 100),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    margin: 15,
+  },
+  backArrowImage: {
+    paddingLeft: 20,
+    resizeMode: 'contain',
+    width: Metrics.screenWidth * (5 / 100),
+    height: Metrics.screenHeight * (5 / 100),
+  },
   textContainer: {
     marginTop: '10%',
     padding: 20,
@@ -80,6 +89,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 26,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   paragraph: {
     marginTop: 5,

@@ -1,6 +1,7 @@
 import {
   Image,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -16,37 +17,51 @@ import Lock_Filled from '../assets/icons/Lock_Filled.png';
 import Lock_Unfilled from '../assets/icons/Lock_Unfilled.png';
 import Show_Password from '../assets/icons/Show_Password.png';
 import Hide_Password from '../assets/icons/Hide_Password.png';
+import User_Filled from '../assets/icons/User_Filled.png';
+import User_Unfilled from '../assets/icons/User_Unfilled.png';
 
-const Login = ({navigation}) => {
+import Input from '../components/input';
+
+const SignUp = ({navigation}) => {
   const [emailInputSelected, setEmailInputSelected] = useState(false);
   const [pswdInputSelected, setPswdInputSelected] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
+  const [userSelected, setUserSelected] = useState(false);
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <View>
-          <Image
-            style={styles.image}
-            source={require('../assets/logo/logo.png')}
-          />
-        </View>
-
-        <View>
-          <Text style={styles.header}>Login</Text>
-          <Text style={styles.paragraph}>Please Log in to your account</Text>
-        </View>
+      <View style={styles.imageContainer}>
+        <Image
+          style={styles.image}
+          source={require('../assets/logo/logo.png')}
+        />
       </View>
-
-      {/* INPUT FIELD PART */}
-
-      <View
-        style={{
-          flex: 2,
-          justifyContent: 'space-around',
-        }}>
+      <ScrollView>
         <View>
-          <Text style={styles.paragraph}>Email</Text>
+          <Text style={styles.header}>Register</Text>
+          <Text style={styles.paragraph}>Please Register your account</Text>
+        </View>
+
+        {/* USER NAME INPUT FIELD */}
+        <View style={{paddingTop: 20}}>
+          <Text style={[styles.paragraph, {paddingBottom: 10}]}>Name</Text>
+          <View style={styles.inputContainer}>
+            <Image
+              style={styles.icon}
+              source={userSelected ? User_Filled : User_Unfilled}
+            />
+            <TextInput
+              onFocus={() => setUserSelected(true)}
+              style={styles.input}
+              placeholder="Enter Your Name"
+              placeholderTextColor="#BDBDBD"
+            />
+          </View>
+        </View>
+
+        {/* EMAIL INPUT FIELD */}
+        <View style={{paddingTop: 20}}>
+          <Text style={[styles.paragraph, {paddingBottom: 10}]}>Email</Text>
           <View style={styles.inputContainer}>
             <Image
               style={styles.icon}
@@ -62,8 +77,9 @@ const Login = ({navigation}) => {
           </View>
         </View>
 
-        <View>
-          <Text style={styles.paragraph}>Password</Text>
+        {/* PASSWORD INPUT FIELD */}
+        <View style={{paddingTop: 20}}>
+          <Text style={[styles.paragraph, {paddingBottom: 10}]}>Password</Text>
           <View style={styles.inputContainer}>
             <Image
               style={styles.icon}
@@ -84,33 +100,44 @@ const Login = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-        <View>
-          <TouchableOpacity>
-            <Text style={[styles.header, {fontSize: 15, textAlign: 'center'}]}>
-              Forgot Password
-            </Text>
-          </TouchableOpacity>
+
+        {/* CONFIRM PASSWORD INPUT FIELD */}
+        <View style={{paddingTop: 20}}>
+          <Text style={[styles.paragraph, {paddingBottom: 10}]}>
+            Confirm Password
+          </Text>
+          <View style={styles.inputContainer}>
+            <Image
+              style={styles.icon}
+              source={pswdInputSelected ? Lock_Filled : Lock_Unfilled}
+            />
+            <TextInput
+              onFocus={() => setPswdInputSelected(true)}
+              style={styles.input}
+              placeholder="Enter Confirm Password"
+              secureTextEntry={showPassword}
+              placeholderTextColor="#BDBDBD"
+            />
+            <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+              <Image
+                style={styles.icon}
+                source={showPassword ? Show_Password : Hide_Password}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
 
-        {/* LOGIN BUTTON */}
-        <View>
+        {/* REGISTER BUTTON */}
+        <View style={{paddingVertical: 40}}>
           <TouchableOpacity
             onPress={() => navigation.navigate('Authentication')}
             style={[styles.btnStyle, {backgroundColor: '#4B4FED'}]}>
-            <Text style={styles.btnText}>Login</Text>
+            <Text style={styles.btnText}>Register</Text>
           </TouchableOpacity>
         </View>
-      </View>
 
-      {/* SOCIAL ICON PART */}
-
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'space-around',
-        }}>
         {/* MESSAGE FOR SOCIAL ICONS BUTTONS*/}
-        <View>
+        <View style={{paddingVertical: 20}}>
           <Text style={[styles.paragraph, {textAlign: 'center'}]}>
             Continue with social accounts
           </Text>
@@ -143,34 +170,38 @@ const Login = ({navigation}) => {
         {/* MESSAGE FOR REGISTRATION */}
         <View
           style={{
+            paddingVertical: 20,
             flexDirection: 'row',
             justifyContent: 'center',
           }}>
           <Text style={[styles.paragraph, {textAlign: 'center'}]}>
-            Don’t have an accounts
+            Have an accounts
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text
               style={[
                 styles.paragraph,
                 {color: '#FFFFFF', paddingLeft: 5, fontWeight: 'bold'},
               ]}>
-              Register here
+              Login here
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
-export default Login;
+export default SignUp;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000000',
     paddingHorizontal: 20,
+  },
+  imageContainer: {
+    // backgroundColor: 'red',
   },
   image: {
     resizeMode: 'contain',
@@ -186,7 +217,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
     color: '#BDBDBD',
     fontSize: 15,
-    marginBottom: 10,
   },
   inputContainer: {
     flexDirection: 'row',
