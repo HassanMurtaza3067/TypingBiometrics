@@ -17,16 +17,11 @@ import Lock_Filled from '../assets/icons/Lock_Filled.png';
 import Lock_Unfilled from '../assets/icons/Lock_Unfilled.png';
 import Show_Password from '../assets/icons/Show_Password.png';
 import Hide_Password from '../assets/icons/Hide_Password.png';
-import User_Filled from '../assets/icons/User_Filled.png';
-import User_Unfilled from '../assets/icons/User_Unfilled.png';
-
-import Input from '../components/input';
 
 const Login = ({navigation}) => {
   const [emailInputSelected, setEmailInputSelected] = useState(false);
   const [pswdInputSelected, setPswdInputSelected] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
-  const [userSelected, setUserSelected] = useState(false);
 
   return (
     <SafeAreaView style={styles.container}>

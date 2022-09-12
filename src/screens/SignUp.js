@@ -20,8 +20,6 @@ import Hide_Password from '../assets/icons/Hide_Password.png';
 import User_Filled from '../assets/icons/User_Filled.png';
 import User_Unfilled from '../assets/icons/User_Unfilled.png';
 
-import Input from '../components/input';
-
 const SignUp = ({navigation}) => {
   const [emailInputSelected, setEmailInputSelected] = useState(false);
   const [pswdInputSelected, setPswdInputSelected] = useState(false);
