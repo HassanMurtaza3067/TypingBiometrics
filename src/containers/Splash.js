@@ -13,26 +13,39 @@ import Metrics from '../theme/metrics';
 
 const Splash = ({navigation}) => {
   return (
+    // MAIN CONTAINER
     <SafeAreaView style={styles.container}>
+      {/* BACKGROUND IMAGE AND LOGO CONTAINER */}
       <View style={styles.imageContainer}>
         <ImageBackground
           style={styles.imageBackground}
           resizeMode="contain"
           source={require('../assets/images/splash_image.png')}>
+          {/* LOGO */}
           <Image
             style={styles.image}
             source={require('../assets/logo/logo.png')}
           />
         </ImageBackground>
       </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.header}>Multi Factor Authentication</Text>
-        <Text style={styles.paragraph}>
-          Identifies the users by the way they type using Artificial
-          Intelligence and Machine Learning
-        </Text>
-      </View>
-      <View style={{flex: 1, justifyContent: 'flex-end'}}>
+
+      {/* TEXT AND LOGIN SIGNUP CONTAINER */}
+      <View
+        style={{
+          flex: 1,
+          padding: 20,
+          justifyContent: 'space-between',
+        }}>
+        {/* TEXT CONTAINER */}
+        <View style={styles.textContainer}>
+          <Text style={styles.header}>Multi Factor Authentication</Text>
+          <Text style={styles.paragraph}>
+            Identifies the users by the way they type using Artificial
+            Intelligence and Machine Learning
+          </Text>
+        </View>
+
+        {/* LOGIN SIGNUP BUTTONS */}
         <View style={styles.btnContainer}>
           <TouchableOpacity
             style={styles.btnStyle}
@@ -63,8 +76,8 @@ const styles = StyleSheet.create({
     height: Metrics.screenHeight * (60 / 100),
   },
   imageBackground: {
-    width: Metrics.screenWidth,
-    height: Metrics.screenHeight * (60 / 100),
+    width: '100%',
+    height: '100%',
   },
   image: {
     marginLeft: 20,
@@ -73,8 +86,7 @@ const styles = StyleSheet.create({
     height: Metrics.screenHeight * (10 / 100),
   },
   textContainer: {
-    marginTop: '10%',
-    padding: 20,
+    // padding: 20,
   },
   header: {
     color: '#FFFFFF',
@@ -88,7 +100,7 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     flexDirection: 'row',
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
   },
   btnStyle: {
     flex: 1,
