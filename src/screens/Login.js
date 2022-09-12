@@ -1,6 +1,7 @@
 import {
   Image,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -16,37 +17,34 @@ import Lock_Filled from '../assets/icons/Lock_Filled.png';
 import Lock_Unfilled from '../assets/icons/Lock_Unfilled.png';
 import Show_Password from '../assets/icons/Show_Password.png';
 import Hide_Password from '../assets/icons/Hide_Password.png';
+import User_Filled from '../assets/icons/User_Filled.png';
+import User_Unfilled from '../assets/icons/User_Unfilled.png';
+
+import Input from '../components/input';
 
 const Login = ({navigation}) => {
   const [emailInputSelected, setEmailInputSelected] = useState(false);
   const [pswdInputSelected, setPswdInputSelected] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
+  const [userSelected, setUserSelected] = useState(false);
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <View>
-          <Image
-            style={styles.image}
-            source={require('../assets/logo/logo.png')}
-          />
-        </View>
-
+      <View style={styles.imageContainer}>
+        <Image
+          style={styles.image}
+          source={require('../assets/logo/logo.png')}
+        />
+      </View>
+      <ScrollView>
         <View>
           <Text style={styles.header}>Login</Text>
           <Text style={styles.paragraph}>Please Log in to your account</Text>
         </View>
-      </View>
 
-      {/* INPUT FIELD PART */}
-
-      <View
-        style={{
-          flex: 2,
-          justifyContent: 'space-around',
-        }}>
-        <View>
-          <Text style={styles.paragraph}>Email</Text>
+        {/* EMAIL INPUT FIELD */}
+        <View style={{paddingTop: 20}}>
+          <Text style={[styles.paragraph, {paddingBottom: 10}]}>Email</Text>
           <View style={styles.inputContainer}>
             <Image
               style={styles.icon}
@@ -62,8 +60,9 @@ const Login = ({navigation}) => {
           </View>
         </View>
 
-        <View>
-          <Text style={styles.paragraph}>Password</Text>
+        {/* PASSWORD INPUT FIELD */}
+        <View style={{paddingTop: 20}}>
+          <Text style={[styles.paragraph, {paddingBottom: 10}]}>Password</Text>
           <View style={styles.inputContainer}>
             <Image
               style={styles.icon}
@@ -84,33 +83,18 @@ const Login = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-        <View>
-          <TouchableOpacity>
-            <Text style={[styles.header, {fontSize: 15, textAlign: 'center'}]}>
-              Forgot Password
-            </Text>
-          </TouchableOpacity>
-        </View>
 
-        {/* LOGIN BUTTON */}
-        <View>
+        {/* REGISTER BUTTON */}
+        <View style={{paddingVertical: 40}}>
           <TouchableOpacity
             onPress={() => navigation.navigate('Authentication')}
             style={[styles.btnStyle, {backgroundColor: '#4B4FED'}]}>
             <Text style={styles.btnText}>Login</Text>
           </TouchableOpacity>
         </View>
-      </View>
 
-      {/* SOCIAL ICON PART */}
-
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'space-around',
-        }}>
         {/* MESSAGE FOR SOCIAL ICONS BUTTONS*/}
-        <View>
+        <View style={{paddingVertical: 20}}>
           <Text style={[styles.paragraph, {textAlign: 'center'}]}>
             Continue with social accounts
           </Text>
@@ -143,6 +127,7 @@ const Login = ({navigation}) => {
         {/* MESSAGE FOR REGISTRATION */}
         <View
           style={{
+            paddingVertical: 30,
             flexDirection: 'row',
             justifyContent: 'center',
           }}>
@@ -159,7 +144,7 @@ const Login = ({navigation}) => {
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -171,6 +156,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#000000',
     paddingHorizontal: 20,
+  },
+  imageContainer: {
+    // backgroundColor: 'red',
   },
   image: {
     resizeMode: 'contain',
@@ -186,7 +174,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
     color: '#BDBDBD',
     fontSize: 15,
-    marginBottom: 10,
   },
   inputContainer: {
     flexDirection: 'row',
