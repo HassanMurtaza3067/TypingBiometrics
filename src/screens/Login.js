@@ -22,6 +22,7 @@ const Login = ({navigation}) => {
   const [emailInputSelected, setEmailInputSelected] = useState(false);
   const [pswdInputSelected, setPswdInputSelected] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
+  const [userSelected, setUserSelected] = useState(false);
 
   return (
     <SafeAreaView style={styles.container}>
