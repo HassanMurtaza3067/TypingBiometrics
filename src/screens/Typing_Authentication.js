@@ -39,7 +39,7 @@ const Typing_Authentication = ({navigation}) => {
         <View style={styles.inputStyle}>
           <TextInput
             style={styles.input}
-            placeholder="Winter is comming "
+            placeholder="Winter is coming "
             placeholderTextColor="#4B4FED"
           />
         </View>

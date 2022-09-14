@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "451523674509",
+    "project_id": "typingbiometrics-otp",
+    "storage_bucket": "typingbiometrics-otp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451523674509:android:bd916f397d1cd831d7fdc4",
+        "android_client_info": {
+          "package_name": "com.typingbiometrics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451523674509-6h5fdb2e5ad8g4ulrsf1ebdmr2esdv7d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2OJx1Cn8CMT7LUBNdHpFZAgwquGHkdeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451523674509-6h5fdb2e5ad8g4ulrsf1ebdmr2esdv7d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
