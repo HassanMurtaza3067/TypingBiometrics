@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Metrics from '../theme/metrics';
 
 import Email_Filled from '../assets/icons/Email_Filled.png';
@@ -19,12 +19,20 @@ import Show_Password from '../assets/icons/Show_Password.png';
 import Hide_Password from '../assets/icons/Hide_Password.png';
 import User_Filled from '../assets/icons/User_Filled.png';
 import User_Unfilled from '../assets/icons/User_Unfilled.png';
+import {AuthContext} from '../navigation/AuthProvider';
 
 const SignUp = ({navigation}) => {
+  const [name, setName] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPaswd, setConfirmPaswd] = useState();
+
   const [emailInputSelected, setEmailInputSelected] = useState(false);
   const [pswdInputSelected, setPswdInputSelected] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
   const [userSelected, setUserSelected] = useState(false);
+
+  const {register} = useContext(AuthContext);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -49,6 +57,8 @@ const SignUp = ({navigation}) => {
               source={userSelected ? User_Filled : User_Unfilled}
             />
             <TextInput
+              value={name}
+              onChangeText={userName => setName(userName)}
               onFocus={() => setUserSelected(true)}
               style={styles.input}
               placeholder="Enter Your Name"
@@ -66,6 +76,8 @@ const SignUp = ({navigation}) => {
               source={emailInputSelected ? Email_Filled : Email_Unfilled}
             />
             <TextInput
+              value={email}
+              onChangeText={userEmail => setEmail(userEmail)}
               onFocus={() => setEmailInputSelected(true)}
               style={styles.input}
               placeholder="Enter Email"
@@ -84,6 +96,8 @@ const SignUp = ({navigation}) => {
               source={pswdInputSelected ? Lock_Filled : Lock_Unfilled}
             />
             <TextInput
+              value={password}
+              onChangeText={userPassword => setPassword(userPassword)}
               onFocus={() => setPswdInputSelected(true)}
               style={styles.input}
               placeholder="Enter Password"
@@ -110,6 +124,10 @@ const SignUp = ({navigation}) => {
               source={pswdInputSelected ? Lock_Filled : Lock_Unfilled}
             />
             <TextInput
+              value={confirmPaswd}
+              onChangeText={userConfirmPaswd =>
+                setConfirmPaswd(userConfirmPaswd)
+              }
               onFocus={() => setPswdInputSelected(true)}
               style={styles.input}
               placeholder="Enter Confirm Password"
@@ -128,7 +146,7 @@ const SignUp = ({navigation}) => {
         {/* REGISTER BUTTON */}
         <View style={{paddingVertical: 40}}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('Authentication')}
+            onPress={() => register(email, password)}
             style={[styles.btnStyle, {backgroundColor: '#4B4FED'}]}>
             <Text style={styles.btnText}>Register</Text>
           </TouchableOpacity>

@@ -7,12 +7,28 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:451523674509:android:bd916f397d1cd831d7fdc4",
+        "mobilesdk_app_id": "1:451523674509:android:8e56c57dfcaa8dacd7fdc4",
         "android_client_info": {
           "package_name": "com.typingbiometrics"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "451523674509-angnnrchbmg7h0o66qnvv6me412dkg99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.typingbiometrics",
+            "certificate_hash": "b1ecbe894d1691cf7a4bc41a000b1b2aa4e83278"
+          }
+        },
+        {
+          "client_id": "451523674509-ro74086t37nbqmjiqiqer2sgsqlf06us.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.typingbiometrics",
+            "certificate_hash": "48dcf389faf47cc529ed5c80424f1ff12a556238"
+          }
+        },
         {
           "client_id": "451523674509-6h5fdb2e5ad8g4ulrsf1ebdmr2esdv7d.apps.googleusercontent.com",
           "client_type": 3

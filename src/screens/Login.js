@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Metrics from '../theme/metrics';
 
 import Email_Filled from '../assets/icons/Email_Filled.png';
@@ -17,12 +17,36 @@ import Lock_Filled from '../assets/icons/Lock_Filled.png';
 import Lock_Unfilled from '../assets/icons/Lock_Unfilled.png';
 import Show_Password from '../assets/icons/Show_Password.png';
 import Hide_Password from '../assets/icons/Hide_Password.png';
+import {AuthContext} from '../navigation/AuthProvider';
 
 const Login = ({navigation}) => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const [emailInputSelected, setEmailInputSelected] = useState(false);
   const [pswdInputSelected, setPswdInputSelected] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
-  const [userSelected, setUserSelected] = useState(false);
+
+  const {login, googlelogin} = useContext(AuthContext);
+
+  // GoogleSignin.configure({
+  //   webClientId:
+  //     '451523674509-6h5fdb2e5ad8g4ulrsf1ebdmr2esdv7d.apps.googleusercontent.com',
+  // });
+
+  // const googleLogin = async () => {
+  //   try {
+  //     // Get the users ID token
+  //     const {idToken} = await GoogleSignin.signIn();
+
+  //     // Create a Google credential with the token
+  //     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+  //     // Sign-in the user with the credential
+  //     await auth().signInWithCredential(googleCredential);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -47,6 +71,8 @@ const Login = ({navigation}) => {
               source={emailInputSelected ? Email_Filled : Email_Unfilled}
             />
             <TextInput
+              value={email}
+              onChangeText={userEmail => setEmail(userEmail)}
               onFocus={() => setEmailInputSelected(true)}
               style={styles.input}
               placeholder="Enter Email"
@@ -65,6 +91,8 @@ const Login = ({navigation}) => {
               source={pswdInputSelected ? Lock_Filled : Lock_Unfilled}
             />
             <TextInput
+              value={password}
+              onChangeText={userPassword => setPassword(userPassword)}
               onFocus={() => setPswdInputSelected(true)}
               style={styles.input}
               placeholder="Enter Password"
@@ -80,10 +108,10 @@ const Login = ({navigation}) => {
           </View>
         </View>
 
-        {/* REGISTER BUTTON */}
+        {/* LOGIN BUTTON */}
         <View style={{paddingVertical: 40}}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('Authentication')}
+            onPress={() => login(email, password)}
             style={[styles.btnStyle, {backgroundColor: '#4B4FED'}]}>
             <Text style={styles.btnText}>Login</Text>
           </TouchableOpacity>
@@ -105,7 +133,9 @@ const Login = ({navigation}) => {
             />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.iconContainer}>
+          <TouchableOpacity
+            style={styles.iconContainer}
+            onPress={() => googlelogin()}>
             <Image
               style={styles.icon}
               source={require('../assets/icons/google.png')}

@@ -1,6 +1,5 @@
 import {
   Image,
-  ImageBackground,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -8,11 +7,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import Metrics from '../theme/metrics';
 
 const Typing_Authentication = ({navigation}) => {
-  const [otpButton, setOtpButton] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
       {/* ARROW BACK , HEADER TEXT AND PARAGRAPH */}
